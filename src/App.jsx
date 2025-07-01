@@ -61,11 +61,11 @@ const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
         <div className="p-6">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">L</span>
+              <span className="text-white font-bold text-sm">OT</span>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">LandOS</h2>
-              <p className="text-xs text-gray-500">Land Management</p>
+              <h2 className="text-lg font-semibold text-gray-900">OBMS</h2>
+            
             </div>
           </div>
         </div>
@@ -129,6 +129,8 @@ const Header = ({ toggleSidebar, currentPage }) => {
   const pageInfo = getPageInfo(currentPage);
 
   return (
+
+    
     <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 sticky top-0 z-30">
       <div className="px-6 py-4">
         <div className="flex items-center justify-between">
@@ -254,6 +256,8 @@ const Dashboard = () => {
   ];
 
   return (
+
+    
     <div className="p-6 space-y-6 max-w-7xl mx-auto">
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -423,8 +427,12 @@ const App = () => {
           {renderCurrentPage()}
         </main>
       </div>
+  
     </div>
-  );
+    
+  
+);
+
 };
 
 export default App;
