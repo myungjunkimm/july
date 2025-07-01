@@ -23,14 +23,16 @@ import {
 
 // 페이지 컴포넌트 import
 import LandManagement from './pages/LandManagement';
+import GuideManagement from './pages/GuideManagement';
+import GuideManagementOption2 from './pages/GuideManagementOption2';
 
 // 사이드바 컴포넌트
 const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
   const menuItems = [
     { id: 'dashboard', name: '대시보드', icon: Home },
     { id: 'LandManagement', name: '랜드사 관리', icon: Building },
-    { id: 'analytics', name: 'Analytics', icon: BarChart3 },
-    { id: 'users', name: 'Users', icon: Users },
+    { id: 'GuideManagement', name: '가이드/인솔자 관리', icon: Users },
+    { id: 'GuideManagementOption2', name: '가이드/인솔자 관리 opt.2', icon: Plus },
     { id: 'documents', name: 'Documents', icon: FileText },
     { id: 'settings', name: 'Settings', icon: Settings },
   ];
@@ -118,8 +120,8 @@ const Header = ({ toggleSidebar, currentPage }) => {
     const pages = {
       'dashboard': { title: 'Dashboard', subtitle: 'Welcome back, here\'s what\'s happening.' },
       'LandManagement': { title: '랜드사 관리', subtitle: '랜드사 등록 및 관리' },
-      'analytics': { title: 'Analytics', subtitle: 'Track performance and insights.' },
-      'users': { title: 'Users', subtitle: 'Manage users and permissions.' },
+      'GuideManagement': { title: '가이드&인솔자 관리', subtitle: '가이드&인솔자 등록 및 관리' },
+      'GuideManagementOption2': { title: '가이드&인솔자 opt.2', subtitle: '가이드&인솔자 등록 및 관리 opt.2' },
       'documents': { title: 'Documents', subtitle: 'Access and organize documents.' },
       'settings': { title: 'Settings', subtitle: 'Configure your preferences.' }
     };
@@ -233,6 +235,10 @@ const App = () => {
         return <Dashboard />;
       case 'LandManagement':
         return <LandManagement />;
+      case 'GuideManagement':
+        return <GuideManagement />;
+      case 'GuideManagementOption2':
+        return <GuideManagementOption2 />;
       case 'analytics':
         return (
           <div className="p-6 max-w-7xl mx-auto">
