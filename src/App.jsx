@@ -19,7 +19,8 @@ import {
   MoreHorizontal,
   Filter,
   Download,
-  MessageSquare
+  MessageSquare,
+  ChartSpline
 } from 'lucide-react';
 
 // 페이지 컴포넌트 import
@@ -28,6 +29,7 @@ import GuideManagement from './pages/GuideManagement';
 import GuideManagementOption2 from './pages/GuideManagementOption2';
 import ReviewList from './pages/ReviewList';
 import ReviewComponents from './pages/ReviewComponents';
+import GuideEvaluation from './pages/GuideEvaluation';
 
 // 사이드바 컴포넌트
 const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
@@ -36,8 +38,10 @@ const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
     { id: 'LandManagement', name: '랜드사 관리', icon: Building },
     { id: 'GuideManagement', name: '가이드/인솔자 관리', icon: Users },
     { id: 'GuideManagementOption2', name: '가이드/인솔자 관리 opt#2', icon: Plus },
+    { id :'GuideEvaluation', name : '평가 관리', icon : ChartSpline},
     { id: 'ReviewList', name: '가이드 평가 Form List', icon: MessageSquare },
     { id: 'ReviewComponents', name : 'Components', icon: FileText }
+
   ];
 
   const handleMenuClick = (pageId) => {
@@ -125,6 +129,7 @@ const Header = ({ toggleSidebar, currentPage }) => {
       'LandManagement': { title: '랜드사 관리', subtitle: '랜드사 등록 및 관리' },
       'GuideManagement': { title: '가이드&인솔자 관리', subtitle: '가이드&인솔자 등록 및 관리' },
       'GuideManagementOption2': { title: '가이드&인솔자 opt.2', subtitle: '가이드&인솔자 등록 및 관리 opt.2' },
+      'GuideEvaluation' : {title : '평가 관리',subtitle : '가이드 평가 관리'},
       'ReviewList': { title: '리뷰/평가 작성 템플릿', subtitle: '리뷰 항목 템플릿' },
       'ReviewComponents': { title: 'ReviewComponents', subtitle: '컴포넌트' }
     };
@@ -242,6 +247,8 @@ const App = () => {
         return <GuideManagement />;
       case 'GuideManagementOption2':
         return <GuideManagementOption2 />;
+      case 'GuideEvaluation':
+        return <GuideEvaluation/>;
       case 'ReviewList':
         return <ReviewList />;
       case 'ReviewComponents':
