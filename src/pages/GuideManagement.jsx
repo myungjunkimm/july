@@ -22,6 +22,15 @@ import {
   Eye,
   MessageSquare
 } from 'lucide-react';
+import vegas1 from '../assets/vegas1.jpg';
+import vegas2 from '../assets/vegas2.jpg';
+import vegas3 from '../assets/vegas3.jpg';
+import vegas4 from '../assets/vegas4.jpg';
+import tokyo1 from '../assets/tokyo1.jpg';
+import tokyo2 from '../assets/tokyo2.jpg';
+import tokyo3 from '../assets/tokyo3.jpg';
+import tokyo4 from '../assets/tokyo4.jpg';
+
 
 // Mock 랜드사 데이터
 const mockLandCompanies = [
@@ -58,7 +67,7 @@ const mockReviews = [
     hasImage: true,
     hasVideo: false,
     hasProfanity: false,
-    images: ['../../src/assets/jeju1.jpg','../../src/assets/jeju2.jpg'],
+    images: [tokyo1,tokyo2],
     fullContent: '제주도의 아름다운 자연을 만끽할 수 있는 환상적인 여행이었습니다. 김가이드님의 전문적인 설명과 친절한 서비스 덕분에 제주도의 숨겨진 명소들을 발견할 수 있었어요. 특히 성산일출봉에서의 일출과 한라산 트레킹은 잊을 수 없는 추억이 되었습니다. 맛집 추천도 정말 좋았고, 현지 문화에 대한 깊이 있는 설명이 인상적이었습니다.',
     ratings: {
       professionalism: 5,
@@ -83,7 +92,7 @@ const mockReviews = [
     hasImage: true,
     hasVideo: true,
     hasProfanity: false,
-    images: ['../../src/assets/vegas1.jpg','../../src/assets/vegas2.jpg','../../src/assets/vegas3.jpg'],
+    images: [vegas1,vegas2,vegas3],
     fullContent: '라스베가스의 화려한 밤 문화와 쇼를 경험하며 멋진 시간을 보냈습니다. 가이드님의 설명이 재미있고 유익했어요. 벨라지오 분수쇼부터 프리몬트 스트리트까지 다양한 명소를 구경할 수 있었고, 특히 시르크 드 솔레이 쇼 예약을 도와주셔서 감사했습니다. 김가이드님이 카지노 에티켓과 팁들도 알려주셔서 안전하고 즐겁게 게임을 즐길 수 있었어요.',
     ratings: {
       professionalism: 4,

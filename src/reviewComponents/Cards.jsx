@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
+import MD_Hover from '../assets/as-is/MD_Hover.png';
+import MD from '../assets/as-is/MD.png';
+import top from '../assets/as-is/top.png';
+import special_hover from '../assets/as-is/특가_hover.png';
+import special from '../assets/as-is/특가.png';
+
+
 
 const Cards = ({ onBack }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -25,7 +32,7 @@ const Cards = ({ onBack }) => {
             <div className="space-y-3">
               <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="../../src/assets/as-is/특가.png" 
+                  src={special} 
                   alt="특가상품 기본 UI" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -44,7 +51,7 @@ const Cards = ({ onBack }) => {
             <div className="space-y-3">
               <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="../../src/assets/as-is/특가_hover.png" 
+                  src={special_hover}
                   alt="특가상품 호버 UI" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -74,7 +81,7 @@ const Cards = ({ onBack }) => {
             <div className="space-y-3">
               <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="../../src/assets/as-is/MD.png" 
+                  src={MD}
                   alt="MD Pick 기본 UI" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -93,7 +100,7 @@ const Cards = ({ onBack }) => {
             <div className="space-y-3">
               <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="../../src/assets/as-is/MD_Hover.png" 
+                  src={MD_Hover}
                   alt="MD Pick 호버 UI" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -122,7 +129,7 @@ const Cards = ({ onBack }) => {
             <div className="space-y-3">
               <div className="aspect-[4/3] bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="../../src/assets/as-is/top.png" 
+                  src={top} 
                   alt="지역별 인기상품 UI" 
                   className="w-full h-full object-cover"
                   onError={(e) => {

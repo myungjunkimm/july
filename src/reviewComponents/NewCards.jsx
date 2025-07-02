@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Star, MapPin, Calendar, Users, Award, Sparkles } from 'lucide-react';
+import vegas1 from '../assets/vegas1.jpg';
+import vegas2 from '../assets/vegas2.jpg';
+import vegas3 from '../assets/vegas3.jpg';
+import vegas4 from '../assets/vegas4.jpg';
+import tokyo1 from '../assets/tokyo1.jpg';
+import tokyo2 from '../assets/tokyo2.jpg';
+import tokyo3 from '../assets/tokyo3.jpg';
+import tokyo4 from '../assets/tokyo4.jpg';
+
 
 const NewCards = ({ onBack }) => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -15,7 +24,7 @@ const NewCards = ({ onBack }) => {
       rating: 4.9,
       reviews: 127,
       hasStarGuide: true,
-      image: "../../src/assets/vegas1.jpg",
+      image: vegas1,
       tags: ["럭셔리", "카지노", "쇼"],
       description: "네온사인이 빛나는 라스베가스에서 특별한 경험을"
     },
@@ -29,7 +38,7 @@ const NewCards = ({ onBack }) => {
       rating: 4.8,
       reviews: 203,
       hasStarGuide: false,
-      image: "../../src/assets/tokyo1.jpg",
+      image: tokyo1,
       tags: ["벚꽃", "문화", "맛집"],
       description: "벚꽃이 만개한 도쿄에서 로맨틱한 순간들을"
     },
@@ -43,7 +52,7 @@ const NewCards = ({ onBack }) => {
       rating: 5.0,
       reviews: 89,
       hasStarGuide: true,
-      image: "../../src/assets/vegas2.jpg",
+      image: tokyo2,
       tags: ["VIP", "나이트라이프", "럭셔리"],
       description: "베가스의 밤을 전문 가이드와 함께 특별하게"
     },
@@ -57,7 +66,7 @@ const NewCards = ({ onBack }) => {
       rating: 4.7,
       reviews: 156,
       hasStarGuide: false,
-      image: "../../src/assets/tokyo2.jpg",
+      image: tokyo2,
       tags: ["현대문화", "쇼핑", "애니메이션"],
       description: "최신 트렌드와 전통이 공존하는 도쿄 탐험"
     },
@@ -71,7 +80,7 @@ const NewCards = ({ onBack }) => {
       rating: 4.9,
       reviews: 98,
       hasStarGuide: true,
-      image: "../../src/assets/vegas3.jpg",
+      image: vegas3,
       tags: ["자연", "어드벤처", "사진"],
       description: "라스베가스와 그랜드캐년을 함께 즐기는 완벽한 조합"
     },
@@ -85,7 +94,7 @@ const NewCards = ({ onBack }) => {
       rating: 4.8,
       reviews: 134,
       hasStarGuide: false,
-      image: "../../src/assets/tokyo3.jpg",
+      image: tokyo3,
       tags: ["미식", "온센", "힐링"],
       description: "도쿄 최고의 맛집과 온천에서 진정한 휴식을"
     }
