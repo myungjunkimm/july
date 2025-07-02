@@ -1,52 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowLeft, 
-  Save, 
   Star, 
-  Building, 
-  Users, 
-  Phone, 
+  User, 
+  MapPin,
   MessageSquare,
-  CheckCircle,
-  XCircle
+  DollarSign,
+  ChevronRight,
+  Heart
 } from 'lucide-react';
 
-const LandCompanyEvaluationTemplate = ({ onBack }) => {
+const GuideReviewTemplate = ({ onBack }) => {
+  // Pretendard 폰트 로드
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    // 폰트 스타일을 body에 적용
+    document.body.style.fontFamily = '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif';
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [showTipModal, setShowTipModal] = useState(false);
   const [formData, setFormData] = useState({
-    // 기본 정보
-    landCompanyName: '',
-    evaluationDate: '',
-    evaluatorName: '',
-    
-    // 평가 항목들 (1-5점 척도)
-    serviceQuality: 0,
-    responseTime: 0,
-    professionalism: 0,
-    communication: 0,
-    reliability: 0,
-    priceCompetitiveness: 0,
-    guideQuality: 0,
-    tourProgramQuality: 0,
-    customerService: 0,
-    problemSolving: 0,
-    
-    // 추가 평가
-    overallSatisfaction: 0,
-    recommendationWillingness: 0,
-    
-    // 텍스트 피드백
-    strengthPoints: '',
-    improvementPoints: '',
-    additionalComments: '',
-    
-    // 선택형 질문
-    contractConditions: '',
-    paymentTerms: '',
-    communicationChannel: '',
-    
-    // 재계약 의향
-    renewalIntention: ''
+    rating: 0,
+    review: '',
+    npsScore: 0
   });
+
+  const [tipAmount, setTipAmount] = useState('');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,283 +45,241 @@ const LandCompanyEvaluationTemplate = ({ onBack }) => {
     }));
   };
 
-  const handleRatingChange = (field, rating) => {
+  const handleNpsClick = (score) => {
     setFormData(prev => ({
       ...prev,
-      [field]: rating
+      npsScore: score
     }));
   };
 
-  const handleSubmit = () => {
-    console.log('랜드사 평가 데이터:', formData);
-    alert('평가가 저장되었습니다.');
+  const handleFeedbackClick = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentStep(2);
+      setIsTransitioning(false);
+    }, 300);
   };
 
-  // 별점 컴포넌트
-  const StarRating = ({ value, onChange, label }) => (
-    <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map(star => (
-          <button
-            key={star}
-            type="button"
-            onClick={() => onChange(star)}
-            className={`p-1 rounded ${star <= value ? 'text-yellow-400' : 'text-gray-300'} hover:text-yellow-400 transition-colors`}
-          >
-            <Star size={20} fill={star <= value ? 'currentColor' : 'none'} />
-          </button>
-        ))}
-        <span className="ml-2 text-sm text-gray-600">
-          {value > 0 ? `${value}/5점` : '평가 안함'}
-        </span>
-      </div>
-    </div>
-  );
+  const handleSubmit = () => {
+    console.log('리뷰 데이터:', formData);
+    alert('리뷰가 성공적으로 저장되었습니다!');
+  };
 
-  // 평가 항목 그룹
-  const evaluationItems = [
-    { key: 'serviceQuality', label: '서비스 품질' },
-    { key: 'responseTime', label: '응답 속도' },
-    { key: 'professionalism', label: '전문성' },
-    { key: 'communication', label: '의사소통' },
-    { key: 'reliability', label: '신뢰성' },
-    { key: 'priceCompetitiveness', label: '가격 경쟁력' },
-    { key: 'guideQuality', label: '가이드 품질' },
-    { key: 'tourProgramQuality', label: '투어 프로그램 품질' },
-    { key: 'customerService', label: '고객 서비스' },
-    { key: 'problemSolving', label: '문제 해결 능력' }
-  ];
-
-  return (
-    <div className="p-6 space-y-6 max-w-4xl mx-auto">
-      {/* 헤더 */}
-      <div className="flex items-center space-x-4">
-        <button
-          onClick={onBack}
-          className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">랜드사 기본 평가</h1>
-          <p className="text-gray-500 mt-1">랜드사의 기본적인 서비스 품질을 평가해주세요</p>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl p-6 border border-gray-200/50 space-y-8">
-        {/* 기본 정보 */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Building size={20} className="mr-2 text-blue-600" />
-            기본 정보
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                랜드사명 <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="landCompanyName"
-                value={formData.landCompanyName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+  const TipModal = () => (
+    showTipModal && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white rounded-3xl p-8 max-w-sm w-full mx-4 shadow-2xl">
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-8 h-8 text-green-600" />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">평가일</label>
-              <input
-                type="date"
-                name="evaluationDate"
-                value={formData.evaluationDate}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">평가자명</label>
-              <input
-                type="text"
-                name="evaluatorName"
-                value={formData.evaluatorName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">가이드에게 팁 주기</h3>
+            <p className="text-gray-600">김가이드에게 감사의 마음을 전해보세요</p>
           </div>
-        </div>
-
-        {/* 상세 평가 항목 */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Star size={20} className="mr-2 text-yellow-500" />
-            상세 평가 (1-5점)
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {evaluationItems.map(item => (
-              <StarRating
-                key={item.key}
-                value={formData[item.key]}
-                onChange={(rating) => handleRatingChange(item.key, rating)}
-                label={item.label}
-              />
+          
+          <div className="grid grid-cols-2 gap-3 mb-6">
+            {['5,000', '10,000', '20,000', '50,000'].map((amount) => (
+              <button
+                key={amount}
+                onClick={() => setTipAmount(amount)}
+                className={`py-4 px-4 rounded-2xl border-2 transition-all ${
+                  tipAmount === amount 
+                    ? 'border-blue-500 bg-blue-50 text-blue-600' 
+                    : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                <div className="text-sm font-medium">{amount}원</div>
+              </button>
             ))}
           </div>
-        </div>
-
-        {/* 종합 평가 */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <CheckCircle size={20} className="mr-2 text-emerald-600" />
-            종합 평가
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <StarRating
-              value={formData.overallSatisfaction}
-              onChange={(rating) => handleRatingChange('overallSatisfaction', rating)}
-              label="전반적 만족도"
-            />
-            <StarRating
-              value={formData.recommendationWillingness}
-              onChange={(rating) => handleRatingChange('recommendationWillingness', rating)}
-              label="추천 의향"
+          
+          <div className="mb-8">
+            <input
+              type="text"
+              placeholder="직접 입력"
+              value={tipAmount}
+              onChange={(e) => setTipAmount(e.target.value)}
+              className="w-full px-4 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
             />
           </div>
+          
+          <div className="flex space-x-3">
+            <button
+              onClick={() => setShowTipModal(false)}
+              className="flex-1 py-4 px-4 bg-gray-100 text-gray-700 rounded-2xl hover:bg-gray-200 transition-colors font-medium"
+            >
+              취소
+            </button>
+            <button
+              onClick={() => {
+                alert(`${tipAmount}원 팁이 전송되었습니다!`);
+                setShowTipModal(false);
+              }}
+              className="flex-1 py-4 px-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-colors font-medium"
+            >
+              팁 보내기
+            </button>
+          </div>
         </div>
+      </div>
+    )
+  );
 
-        {/* 선택형 질문 */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <Users size={20} className="mr-2 text-purple-600" />
-            추가 정보
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">계약 조건</label>
-              <select
-                name="contractConditions"
-                value={formData.contractConditions}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">선택하세요</option>
-                <option value="매우만족">매우 만족</option>
-                <option value="만족">만족</option>
-                <option value="보통">보통</option>
-                <option value="불만족">불만족</option>
-                <option value="매우불만족">매우 불만족</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">결제 조건</label>
-              <select
-                name="paymentTerms"
-                value={formData.paymentTerms}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">선택하세요</option>
-                <option value="적절함">적절함</option>
-                <option value="보통">보통</option>
-                <option value="개선필요">개선 필요</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">주요 소통 채널</label>
-              <select
-                name="communicationChannel"
-                value={formData.communicationChannel}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">선택하세요</option>
-                <option value="전화">전화</option>
-                <option value="이메일">이메일</option>
-                <option value="카카오톡">카카오톡</option>
-                <option value="위챗">위챗</option>
-                <option value="기타">기타</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">재계약 의향</label>
-              <select
-                name="renewalIntention"
-                value={formData.renewalIntention}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">선택하세요</option>
-                <option value="적극희망">적극 희망</option>
-                <option value="희망">희망</option>
-                <option value="보통">보통</option>
-                <option value="고려중">고려 중</option>
-                <option value="희망하지않음">희망하지 않음</option>
-              </select>
+  // Step 1: 초기 평가 화면
+  if (currentStep === 1) {
+    return (
+      <div 
+        className={`min-h-screen bg-gray-50 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform translate-x-4' : 'opacity-100'}`}
+        style={{ fontFamily: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif' }}
+      >
+        <TipModal />
+        
+        {/* Header */}
+        <div className="bg-white border-b border-gray-100">
+          <div className="max-w-lg mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <button onClick={onBack} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                <ArrowLeft size={20} className="text-gray-600" />
+              </button>
+              <h1 className="text-lg font-medium text-gray-900">가이드 평가</h1>
+              <div className="w-8"></div>
             </div>
           </div>
         </div>
 
-        {/* 텍스트 피드백 */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-            <MessageSquare size={20} className="mr-2 text-orange-600" />
-            상세 피드백
-          </h3>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">강점 및 우수한 점</label>
-              <textarea
-                name="strengthPoints"
-                value={formData.strengthPoints}
-                onChange={handleInputChange}
-                rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="랜드사의 강점이나 우수한 서비스에 대해 작성해주세요..."
-              />
+        {/* Main Content */}
+        <div className="max-w-lg mx-auto px-6 py-16">
+          <div className="text-center">
+            {/* Profile Image */}
+            <div className="w-24 h-24 bg-gray-200 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+              <User size={32} className="text-gray-500" />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">개선이 필요한 점</label>
-              <textarea
-                name="improvementPoints"
-                value={formData.improvementPoints}
-                onChange={handleInputChange}
-                rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="개선이 필요한 부분이나 건의사항을 작성해주세요..."
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">기타 의견</label>
-              <textarea
-                name="additionalComments"
-                value={formData.additionalComments}
-                onChange={handleInputChange}
-                rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="추가적인 의견이나 특이사항을 작성해주세요..."
-              />
+            
+            {/* Guide Name */}
+            <h2 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontWeight: 600 }}>김가이드</h2>
+            <p className="text-gray-500 text-sm mb-12" style={{ fontWeight: 400 }}>전문 가이드</p>
+            
+            {/* Main Question */}
+            <h3 className="text-2xl font-medium text-gray-900 mb-4 leading-relaxed" style={{ fontWeight: 500 }}>
+              김가이드와 함께한 여행<br />
+              어떠셨나요?
+            </h3>
+            <p className="text-gray-600 mb-12" style={{ fontWeight: 400 }}>
+              여러분의 의견이 궁금해요.
+            </p>
+            
+            {/* Action Buttons */}
+            <div className="space-y-4">
+              <button
+                onClick={() => setShowTipModal(true)}
+                className="w-full py-4 px-6 bg-white border border-gray-200 text-gray-700 rounded-2xl hover:bg-gray-50 transition-colors font-medium"
+              >
+                커피값 선물하기
+              </button>
+              <button
+                onClick={handleFeedbackClick}
+                className="w-full py-4 px-6 bg-red-500 text-white rounded-2xl hover:bg-red-600 transition-colors font-medium"
+              >
+                의견 남기기
+              </button>
             </div>
           </div>
         </div>
+      </div>
+    );
+  }
 
-        {/* 저장 버튼 */}
-        <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200">
+  // Step 2: 상세 평가 화면
+  return (
+    <div 
+      className={`min-h-screen bg-gray-50 transition-all duration-300 ${isTransitioning ? 'opacity-0 transform -translate-x-4' : 'opacity-100'}`}
+      style={{ fontFamily: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif' }}
+    >
+      {/* Header */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-lg mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <button 
+              onClick={() => setCurrentStep(1)} 
+              className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+            >
+              <ArrowLeft size={20} className="text-gray-600" />
+            </button>
+            <h1 className="text-lg font-medium text-gray-900">가이드 평가</h1>
+            <div className="w-8"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-lg mx-auto px-6 py-8">
+        {/* Product Info */}
+        <div className="bg-white rounded-3xl p-8 mb-8 shadow-sm">
+          <div className="flex items-start space-x-4 mb-8">
+            <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <MapPin size={20} className="text-gray-500" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg font-bold text-gray-900 mb-1 leading-tight" style={{ fontWeight: 700 }}>
+                [VIP리무진/노옵션]미서부10일
+              </h2>
+              <p className="text-gray-500 text-sm" style={{ fontWeight: 400 }}>가이드명: 김가이드</p>
+            </div>
+          </div>
+
+          {/* NPS Question */}
+          <div className="mb-8">
+            <h3 className="text-lg font-medium text-gray-900 mb-6 text-center" style={{ fontWeight: 500 }}>
+              이 가이드를 주변 사람들에게<br />
+              추천하시겠습니까?
+            </h3>
+            <div className="flex justify-between items-center mb-3 text-xs text-gray-500">
+              <span>전혀 추천하지 않음</span>
+              <span>매우 추천함</span>
+            </div>
+            <div className="grid grid-cols-11 gap-1">
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((score) => (
+                <button
+                  key={score}
+                  onClick={() => handleNpsClick(score)}
+                  className={`aspect-square rounded-xl text-sm font-medium transition-all ${
+                    formData.npsScore === score
+                      ? 'bg-blue-600 text-white shadow-lg scale-110'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {score}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Review Input */}
+          <div className="mb-8">
+            <textarea
+              name="review"
+              value={formData.review}
+              onChange={handleInputChange}
+              rows={6}
+              className="w-full px-0 py-0 border-0 focus:ring-0 text-lg resize-none bg-transparent"
+              placeholder="홍길동 가이드와 함께한 여행을 자유롭게 남겨주세요"
+              style={{ 
+                color: formData.review ? '#000' : '#9CA3AF',
+                fontSize: '18px',
+                lineHeight: '1.6',
+                fontFamily: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                fontWeight: formData.review ? 400 : 400
+              }}
+            />
+          </div>
+
+          {/* Submit Button */}
           <button
-            type="button"
-            onClick={onBack}
-            className="px-6 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            취소
-          </button>
-          <button
-            type="button"
             onClick={handleSubmit}
-            className="flex items-center space-x-2 px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            disabled={!formData.review.trim()}
+            className="w-full py-4 bg-red-500 text-white rounded-2xl hover:bg-red-600 transition-colors font-medium text-lg disabled:bg-gray-300 disabled:cursor-not-allowed"
+            style={{ fontWeight: 500 }}
           >
-            <Save size={16} />
-            <span>평가 저장</span>
+            의견 남기기
           </button>
         </div>
       </div>
@@ -340,4 +287,4 @@ const LandCompanyEvaluationTemplate = ({ onBack }) => {
   );
 };
 
-export default LandCompanyEvaluationTemplate;
+export default GuideReviewTemplate;

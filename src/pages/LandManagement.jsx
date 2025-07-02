@@ -53,7 +53,7 @@ const mockLandCompanies = [
     id: 2,
     uuid: 'LAND-2024-002',
     organizationType: '연합',
-    organizationName: '전국부동산연합회',
+    organizationName: '인솔자연합',
     businessType: '개인사업자',
     businessNumber: '987-65-43210',
     representative: '이사장',

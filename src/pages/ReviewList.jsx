@@ -14,44 +14,33 @@ import {
 // 템플릿 컴포넌트 import
 import Template1 from '../reviewTemplates/1';
 import Template2 from '../reviewTemplates/2';
+import Template3 from '../reviewTemplates/3';
+import Template4 from '../reviewTemplates/4';
 
 // 리뷰 템플릿 Mock 데이터
 const mockTemplates = [
   {
     id: 1,
-    templateName: '랜드사 기본 평가',
-    description: '랜드사의 기본적인 서비스 품질을 평가하는 템플릿',
-    category: '랜드사',
-    itemCount: 15
+    templateName: '가이드 평가 폼 템플릿 #1',
+    description: '가이드 팁 + NPS + TEXT 후기',
+  
   },
   {
     id: 2,
-    templateName: '가이드 서비스 평가',
-    description: '가이드의 전문성과 서비스 태도를 평가하는 템플릿',
-    category: '가이드',
-    itemCount: 12
+    templateName: '가이드 평가 폼 템플릿 #2',
+    description: '가이드 평가 후 항목별 MULTI-SELECT, 사진 후기, 마일리지',
   },
   {
     id: 3,
-    templateName: '투어 프로그램 만족도',
-    description: '투어 프로그램의 전반적인 만족도를 측정하는 템플릿',
-    category: '프로그램',
-    itemCount: 20
+    templateName: '가이드 평가 폼 템플릿 #3',
+    description: 'EMOJI 평가 항목 + 완료 후 자세한 가이드 작성',
   },
   {
     id: 4,
-    templateName: '숙박시설 품질 평가',
-    description: '숙박시설의 청결도, 편의성 등을 평가하는 템플릿',
-    category: '숙박',
-    itemCount: 18
-  },
-  {
-    id: 5,
-    templateName: '교통편 이용 만족도',
-    description: '버스, 항공편 등 교통편 이용에 대한 만족도 평가',
-    category: '교통',
-    itemCount: 10
+    templateName: '가이드 평가 폼 템플릿 #4',
+    description: '페이지별 항목 노출 - Toss 느낌',
   }
+
 ];
 
 const ReviewList = () => {
@@ -64,14 +53,6 @@ const ReviewList = () => {
   // 통계 데이터
   const totalTemplates = templates.length;
 
-  // 필터링된 템플릿
-  const filteredTemplates = templates.filter(template => {
-    const matchesSearch = template.templateName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         template.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = categoryFilter === '전체' || template.category === categoryFilter;
-    
-    return matchesSearch && matchesCategory;
-  });
 
   // 템플릿 상세보기
   const handleViewTemplate = (template) => {
@@ -151,6 +132,12 @@ const ReviewList = () => {
         return <Template1 onBack={handleBack} />;
       case 2:
         return <Template2 onBack={handleBack} />;
+      case 3:
+        return <Template3 onBack={handleBack} />;
+      case 4:
+        return <Template4 onBack={handleBack} />;
+      case 6:
+        return <Template6 onBack={handleBack} />;
       default:
         return (
           <div className="p-6 space-y-6 max-w-4xl mx-auto">

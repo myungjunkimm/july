@@ -25,14 +25,14 @@ const mockLandCompanies = [
   {
     id: 1,
     uuid: 'LAND-2024-001',
-    organizationName: '한국랜드개발(주)',
+    organizationName: 'A랜드사',
     organizationType: '랜드사',
     businessType: '법인사업자'
   },
   {
     id: 2,
     uuid: 'LAND-2024-002',
-    organizationName: '전국부동산연합회',
+    organizationName: '인솔자연합',
     organizationType: '연합',
     businessType: '개인사업자'
   }
@@ -49,7 +49,7 @@ const mockGuides = [
     snsType: '카카오톡',
     snsId: 'guide_kim',
     landCompanyId: 1,
-    landCompanyName: '한국랜드개발(주)',
+    landCompanyName: 'A랜드사',
     guideType: '가이드',
     employmentType: '정규직',
     status: '활성',
@@ -68,7 +68,7 @@ const mockGuides = [
     snsType: 'WeChat',
     snsId: 'leader_lee',
     landCompanyId: 1,
-    landCompanyName: '한국랜드개발(주)',
+    landCompanyName: '인솔자연합',
     guideType: '인솔자',
     employmentType: '프리랜서',
     status: '활성',

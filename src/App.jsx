@@ -27,6 +27,7 @@ import LandManagement from './pages/LandManagement';
 import GuideManagement from './pages/GuideManagement';
 import GuideManagementOption2 from './pages/GuideManagementOption2';
 import ReviewList from './pages/ReviewList';
+import ReviewComponents from './pages/ReviewComponents';
 
 // 사이드바 컴포넌트
 const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
@@ -34,10 +35,9 @@ const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
     { id: 'dashboard', name: '대시보드', icon: Home },
     { id: 'LandManagement', name: '랜드사 관리', icon: Building },
     { id: 'GuideManagement', name: '가이드/인솔자 관리', icon: Users },
-    { id: 'GuideManagementOption2', name: '가이드/인솔자 관리 opt.2', icon: Plus },
-    { id: 'ReviewList', name: '리뷰 Options', icon: MessageSquare },
-    { id: 'documents', name: 'Documents', icon: FileText },
-    { id: 'settings', name: 'Settings', icon: Settings },
+    { id: 'GuideManagementOption2', name: '가이드/인솔자 관리 opt#2', icon: Plus },
+    { id: 'ReviewList', name: '가이드 평가 Form List', icon: MessageSquare },
+    { id: 'ReviewComponents', name : 'Components', icon: FileText }
   ];
 
   const handleMenuClick = (pageId) => {
@@ -121,12 +121,12 @@ const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
 const Header = ({ toggleSidebar, currentPage }) => {
   const getPageInfo = (pageId) => {
     const pages = {
-      'dashboard': { title: 'Dashboard', subtitle: 'Welcome back, here\'s what\'s happening.' },
+      'dashboard': { title: '대시보드', subtitle: '' },
       'LandManagement': { title: '랜드사 관리', subtitle: '랜드사 등록 및 관리' },
       'GuideManagement': { title: '가이드&인솔자 관리', subtitle: '가이드&인솔자 등록 및 관리' },
       'GuideManagementOption2': { title: '가이드&인솔자 opt.2', subtitle: '가이드&인솔자 등록 및 관리 opt.2' },
       'ReviewList': { title: '리뷰/평가 작성 템플릿', subtitle: '리뷰 항목 템플릿' },
-      'settings': { title: 'Settings', subtitle: 'Configure your preferences.' }
+      'ReviewComponents': { title: 'ReviewComponents', subtitle: '컴포넌트' }
     };
     return pages[pageId] || pages.dashboard;
   };
@@ -244,6 +244,8 @@ const App = () => {
         return <GuideManagementOption2 />;
       case 'ReviewList':
         return <ReviewList />;
+      case 'ReviewComponents':
+        return <ReviewComponents/>;
       case 'analytics':
         return (
           <div className="p-6 max-w-7xl mx-auto">

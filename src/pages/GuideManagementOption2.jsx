@@ -40,7 +40,7 @@ const mockLandCompanies = [
   {
     id: 2,
     uuid: 'LAND-2024-002',
-    organizationName: '전국부동산연합회',
+    organizationName: '인솔자연합',
     organizationType: '연합',
     businessType: '개인사업자',
     representative: '이사장',
