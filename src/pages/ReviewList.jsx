@@ -19,27 +19,27 @@ import Template4 from '../reviewTemplates/4';
 
 // 리뷰 템플릿 Mock 데이터
 const mockTemplates = [
-  {
-    id: 1,
-    templateName: '가이드 평가 폼 템플릿 #1',
-    description: '가이드 팁 + NPS + TEXT 후기',
+  // {
+  //   id: 1,
+  //   templateName: '가이드 평가 폼 템플릿 #1',
+  //   description: '가이드 팁 + NPS + TEXT 후기',
   
-  },
+  // },
   {
     id: 2,
-    templateName: '가이드 평가 폼 템플릿 #2',
+    templateName: '가이드 평가 폼 템플릿 #1',
     description: '가이드 평가 후 항목별 MULTI-SELECT, 사진 후기, 마일리지',
   },
   {
     id: 3,
-    templateName: '가이드 평가 폼 템플릿 #3',
+    templateName: '가이드 평가 폼 템플릿 #2',
     description: 'EMOJI 평가 항목 + 완료 후 자세한 가이드 작성',
-  },
-  {
-    id: 4,
-    templateName: '가이드 평가 폼 템플릿 #4',
-    description: '페이지별 항목 노출 - Toss 느낌',
   }
+  // {
+  //   id: 4,
+  //   templateName: '가이드 평가 폼 템플릿 #4',
+  //   description: '페이지별 항목 노출 - Toss 느낌',
+  // }
 
 ];
 

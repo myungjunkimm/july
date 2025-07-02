@@ -34,13 +34,13 @@ import GuideEvaluation from './pages/GuideEvaluation';
 // 사이드바 컴포넌트
 const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
   const menuItems = [
-    { id: 'dashboard', name: '대시보드', icon: Home },
+    // { id: 'dashboard', name: '대시보드', icon: Home },
     { id: 'LandManagement', name: '랜드사 관리', icon: Building },
     { id: 'GuideManagement', name: '가이드/인솔자 관리', icon: Users },
     { id: 'GuideManagementOption2', name: '가이드/인솔자 관리 opt#2', icon: Plus },
     { id :'GuideEvaluation', name : '평가 관리', icon : ChartSpline},
-    { id: 'ReviewList', name: '가이드 평가 Form List', icon: MessageSquare },
-    { id: 'ReviewComponents', name : 'Components', icon: FileText }
+    { id: 'ReviewList', name: '가이드 평가 Form 템플릿', icon: MessageSquare },
+    { id: 'ReviewComponents', name : '기능 & 컴포넌트', icon: FileText }
 
   ];
 

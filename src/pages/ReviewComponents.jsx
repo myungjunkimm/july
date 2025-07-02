@@ -37,7 +37,7 @@ const mockTemplates = [
   },
   {
     id: 4,
-    templateName: '카드 컴포넌트 (뱃지) #1',
+    templateName: '카드 컴포넌트 (뱃지) #2',
     description: '싱글 이미지',
   }
 
