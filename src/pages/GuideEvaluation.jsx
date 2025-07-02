@@ -38,7 +38,6 @@ const mockReviews = [
     hasImage: true,
     hasVideo: false,
     hasProfanity: false,
-    hasProfanity: false,
     images: ['../../src/assets/tokyo1.jpg'],
     fullContent: '정말 친절하고 전문적인 가이드였습니다. 도쿄의 숨겨진 명소들을 많이 알려주셔서 너무 만족스러웠어요. 특히 현지 맛집과 일본 문화 설명이 최고였습니다!         김지현님이 아사쿠사, 시부야, 하라주쿠 등 각 지역의 역사와 문화에 대해 상세히 설명해주셔서 단순한 관광이 아닌 진정한 일본 문화 체험을 할 수 있었습니다. 비가 왔던 날에도 실내 박물관과 쇼핑몰 코스를 준비해주셔서 일정이 전혀 지장받지 않았어요. 츠키지 시장에서의 스시 체험과 긴자에서의 쇼핑 가이드도 완벽했습니다!',
     ratings: {

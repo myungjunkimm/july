@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Star, MapPin, Calendar, Users, Award, Sparkles, ChevronLeft, ChevronRight, Heart, Share2, Bookmark, Camera } from 'lucide-react';
+import vegas1 from '../assets/vegas1.jpg';
+import vegas2 from '../assets/vegas2.jpg';
+import vegas3 from '../assets/vegas3.jpg';
+import vegas4 from '../assets/vegas4.jpg';
+import tokyo1 from '../assets/tokyo1.jpg';
+import tokyo2 from '../assets/tokyo2.jpg';
+import tokyo3 from '../assets/tokyo3.jpg';
+import tokyo4 from '../assets/tokyo4.jpg';
 
 const NewCards2 = ({ onBack }) => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -16,7 +24,7 @@ const NewCards2 = ({ onBack }) => {
       rating: 4.9,
       reviews: 127,
       hasStarGuide: true,
-      images: ["../../src/assets/vegas1.jpg", "../../src/assets/vegas2.jpg", "../../src/assets/vegas3.jpg", "../../src/assets/vegas4.jpg"],
+      images: [vegas1, vegas2, vegas3, vegas4],
       tags: ["럭셔리", "카지노", "쇼"],
       description: "네온사인이 빛나는 라스베가스에서 특별한 경험을",
       highlights: ["프리미엄 호텔", "VIP 쇼 관람", "카지노 체험", "그랜드캐년 투어"]
@@ -31,7 +39,7 @@ const NewCards2 = ({ onBack }) => {
       rating: 4.8,
       reviews: 203,
       hasStarGuide: false,
-      images: ["../../src/assets/tokyo1.jpg", "../../src/assets/tokyo2.jpg", "../../src/assets/tokyo3.jpg", "../../src/assets/tokyo4.jpg"],
+      images: [tokyo1, tokyo2, tokyo3, tokyo4],
       tags: ["벚꽃", "문화", "맛집"],
       description: "벚꽃이 만개한 도쿄에서 로맨틱한 순간들을",
       highlights: ["벚꽃 명소", "전통 료칸", "미슐랭 맛집", "문화 체험"]
@@ -46,7 +54,7 @@ const NewCards2 = ({ onBack }) => {
       rating: 5.0,
       reviews: 89,
       hasStarGuide: true,
-      images: ["../../src/assets/vegas2.jpg", "../../src/assets/vegas1.jpg", "../../src/assets/vegas4.jpg", "../../src/assets/vegas3.jpg"],
+      images: [vegas1, vegas2, vegas3, vegas4],
       tags: ["VIP", "나이트라이프", "럭셔리"],
       description: "베가스의 밤을 전문 가이드와 함께 특별하게",
       highlights: ["VIP 클럽", "개인 가이드", "프라이빗 투어", "럭셔리 숙박"]

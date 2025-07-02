@@ -125,7 +125,6 @@ const Sidebar = ({ isOpen, setIsOpen, currentPage, setCurrentPage }) => {
 const Header = ({ toggleSidebar, currentPage }) => {
   const getPageInfo = (pageId) => {
     const pages = {
-      'dashboard': { title: '대시보드', subtitle: '' },
       'LandManagement': { title: '랜드사 관리', subtitle: '랜드사 등록 및 관리' },
       'GuideManagement': { title: '가이드&인솔자 관리', subtitle: '가이드&인솔자 등록 및 관리' },
       'GuideManagementOption2': { title: '가이드&인솔자 opt.2', subtitle: '가이드&인솔자 등록 및 관리 opt.2' },
@@ -235,12 +234,10 @@ const Dashboard = () => {
 // 메인 App 컴포넌트
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [currentPage, setCurrentPage] = useState('LandManagement');
 
   const renderCurrentPage = () => {
     switch (currentPage) {
-      case 'dashboard':
-        return <Dashboard />;
       case 'LandManagement':
         return <LandManagement />;
       case 'GuideManagement':
@@ -253,48 +250,8 @@ const App = () => {
         return <ReviewList />;
       case 'ReviewComponents':
         return <ReviewComponents/>;
-      case 'analytics':
-        return (
-          <div className="p-6 max-w-7xl mx-auto">
-            <div className="bg-white rounded-xl border border-gray-200/50 p-12 text-center">
-              <BarChart3 size={64} className="mx-auto text-gray-300 mb-4" />
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">Analytics</h2>
-              <p className="text-gray-500">Advanced analytics dashboard coming soon.</p>
-            </div>
-          </div>
-        );
-      case 'users':
-        return (
-          <div className="p-6 max-w-7xl mx-auto">
-            <div className="bg-white rounded-xl border border-gray-200/50 p-12 text-center">
-              <Users size={64} className="mx-auto text-gray-300 mb-4" />
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">Users</h2>
-              <p className="text-gray-500">User management system coming soon.</p>
-            </div>
-          </div>
-        );
-      case 'documents':
-        return (
-          <div className="p-6 max-w-7xl mx-auto">
-            <div className="bg-white rounded-xl border border-gray-200/50 p-12 text-center">
-              <FileText size={64} className="mx-auto text-gray-300 mb-4" />
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">Documents</h2>
-              <p className="text-gray-500">Document management system coming soon.</p>
-            </div>
-          </div>
-        );
-      case 'settings':
-        return (
-          <div className="p-6 max-w-7xl mx-auto">
-            <div className="bg-white rounded-xl border border-gray-200/50 p-12 text-center">
-              <Settings size={64} className="mx-auto text-gray-300 mb-4" />
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">Settings</h2>
-              <p className="text-gray-500">Settings panel coming soon.</p>
-            </div>
-          </div>
-        );
       default:
-        return <Dashboard />;
+        return <LandManagement />;
     }
   };
 
