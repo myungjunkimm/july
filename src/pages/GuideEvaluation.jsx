@@ -39,7 +39,7 @@ const mockReviews = [
     hasVideo: false,
     hasProfanity: false,
     hasProfanity: false,
-    images: ['../../src/assets/review1.jpg'],
+    images: ['../../src/assets/tokyo1.jpg'],
     fullContent: '정말 친절하고 전문적인 가이드였습니다. 도쿄의 숨겨진 명소들을 많이 알려주셔서 너무 만족스러웠어요. 특히 현지 맛집과 일본 문화 설명이 최고였습니다!         김지현님이 아사쿠사, 시부야, 하라주쿠 등 각 지역의 역사와 문화에 대해 상세히 설명해주셔서 단순한 관광이 아닌 진정한 일본 문화 체험을 할 수 있었습니다. 비가 왔던 날에도 실내 박물관과 쇼핑몰 코스를 준비해주셔서 일정이 전혀 지장받지 않았어요. 츠키지 시장에서의 스시 체험과 긴자에서의 쇼핑 가이드도 완벽했습니다!',
     ratings: {
       professionalism: 5,
@@ -64,7 +64,7 @@ const mockReviews = [
     hasImage: true,
     hasVideo: true,
     hasProfanity: false,
-    images: ['../../src/assets/review2.jpg'],
+    images: ['../../src/assets/vegas1.jpg','../../src/assets/vegas2.jpg','../../src/assets/vegas3.jpg'],
     fullContent: '라스베가스의 화려한 밤 문화와 쇼를 경험하며 멋진 시간을 보냈습니다. 가이드님의 설명이 재미있고 유익했어요. 벨라지오 분수쇼부터 프리몬트 스트리트까지 다양한 명소를 구경할 수 있었고, 특히 시르크 드 솔레이 쇼 예약을 도와주셔서 감사했습니다. 박민수님이 카지노 에티켓과 팁들도 알려주셔서 안전하고 즐겁게 게임을 즐길 수 있었어요. 그랜드 캐니언 당일치기 투어도 환상적이었습니다!',
     ratings: {
       professionalism: 4,
@@ -113,7 +113,7 @@ const mockReviews = [
     status: '승인',
     hasImage: true,
     hasVideo: false,
-    images: ['../../src/assets/review3.jpg'],
+    images: ['../../src/assets/vegas2.jpg'],
     fullContent: '라스베가스의 럭셔리한 면모를 경험할 수 있었고, 가이드님이 현지 문화와 엔터테인먼트를 잘 알려주셨어요. 다음에도 또 이용하고 싶습니다! 벨라지오와 웨인 호텔의 고급 레스토랑 예약부터 VIP 쇼 티켓까지 모든 것을 완벽하게 준비해주셨어요. 최수연님이 추천해주신 하이엔드 쇼핑몰과 스파 체험도 최고였고, 안전에도 신경 많이 써주셔서 안심하고 여행할 수 있었습니다. 후버댐과 레드록 캐니언 투어도 잊을 수 없는 추억이에요!',
     ratings: {
       professionalism: 5,
